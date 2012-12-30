@@ -6,7 +6,8 @@ import datetime
 import smtplib
 import string
 from django.template.loader import render_to_string
-
+from django.core.mail import send_mail
+from django.core.mail import EmailMultiAlternatives
 
 class Command(NoArgsCommand):
 	def handle_noargs(self, **options):
@@ -18,18 +19,8 @@ class Command(NoArgsCommand):
 			clist = Contact.objects.filter(user=current_user)
 			email_text = render_to_string('email-update.html', {'contacts' : clist})
 			print email_text
-# 			#uses smtplib for emailing
-# 			SUBJECT = "Follow Upz Reminder"
-# 			TO = current_user.email
-# 			FROM = "notifier@fz.com"
-# 			text = email_text
-# 			BODY = string.join((
-#         		"From: %s" % FROM,
-#         		"To: %s" % TO,
-#         		"Subject: %s" % SUBJECT ,
-#         		"",
-#         		text
-#         		), "\r\n")
-# 			server = smtplib.SMTP(HOST)
-# 			server.sendmail(FROM, [TO], BODY)
-# 			server.quit()
+ 			#uses smtplib for emailing
+ 			msg = EmailMultiAlternatives('FollowUpz Reminder', email_text, 'imsherrill@gmail.com',
+    [current_user.email])
+    		msg.attach_alternative(email_text, "text/html")
+    		msg.send()

@@ -3,11 +3,11 @@
 	
 		<ul>
 			{% for current_contact in contacts %}
-			<li> {{ current_contact.name }}: 
+			<li><strong> {{ current_contact.name }}: </strong>
 			<ul> {% for current_term in current_contact.searchTerms.all %}
 				<li> {{ current_term.term }}:
 				<ul> {% for current_article in current_term.articles.all %}
-					<li> {{ current_article.headline }}: {{ current_article.url }} </li>
+					<li><a href="{{ current_article.url }}"> {{ current_article.headline }} </a> </li>
 					 {% endfor %}
 				</ul>
 				</li>
