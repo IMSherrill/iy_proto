@@ -1,0 +1,21 @@
+<html>
+	<body>
+	
+		<ul>
+			{% for current_contact in contacts %}
+			<li> {{ current_contact.name }}: 
+			<ul> {% for current_term in current_contact.searchTerms.all %}
+				<li> {{ current_term.term }}:
+				<ul> {% for current_article in current_term.articles.all %}
+					<li> {{ current_article.headline }}: {{ current_article.url }} </li>
+					 {% endfor %}
+				</ul>
+				</li>
+			{% endfor %}
+			</ul>
+			</li>
+		{% endfor %}
+		</ul>
+		
+	</body>
+</html>
