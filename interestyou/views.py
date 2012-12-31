@@ -1,8 +1,8 @@
 # Create your views here.
 from django.http import HttpResponse
-from followupz.models import *
+from interestyou.models import *
 from django.core.management.base import BaseCommand
-from followupz.DaylifeAPI import *
+from interestyou.DaylifeAPI import *
 import time
 import datetime
 

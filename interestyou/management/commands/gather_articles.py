@@ -1,6 +1,6 @@
-from followupz.models import *
+from interestyou.models import *
 from django.core.management.base import NoArgsCommand
-from followupz.DaylifeAPI import *
+from interestyou.DaylifeAPI import *
 import time
 import datetime
 import dateutil.parser

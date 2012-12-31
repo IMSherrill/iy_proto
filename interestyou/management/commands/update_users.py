@@ -1,6 +1,6 @@
-from followupz.models import *
+from interestyou.models import *
 from django.core.management.base import NoArgsCommand
-from followupz.DaylifeAPI import *
+from interestyou.DaylifeAPI import *
 import time
 import datetime
 import smtplib
@@ -20,7 +20,7 @@ class Command(NoArgsCommand):
 			email_text = render_to_string('email-update.html', {'contacts' : clist})
 			print email_text
  			#uses smtplib for emailing
- 			msg = EmailMultiAlternatives('FollowUpz Reminder', email_text, 'imsherrill@gmail.com',
+ 			msg = EmailMultiAlternatives('interestyou Reminder', email_text, 'imsherrill@gmail.com',
     [current_user.email])
     		msg.attach_alternative(email_text, "text/html")
     		msg.send()
